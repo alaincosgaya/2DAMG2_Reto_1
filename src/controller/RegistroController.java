@@ -180,7 +180,7 @@ public class RegistroController implements Initializable {
 
     public static boolean validarNumPasswdPattern(String passwd) {
         
-        return passwd.matches(".*\\d.*");
+        return passwd.matches(".*\\d.*"); 
     }
 
      public boolean validarEqualPasswdPattern(String passwd) {
