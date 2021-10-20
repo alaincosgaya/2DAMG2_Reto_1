@@ -18,10 +18,11 @@ public class App extends Application{
 
      @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Login_1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
         Scene scene = new Scene(root);
         stage.setResizable(false);
         stage.getIcons().add(new Image("/photos/descargas-removebg-preview.png"));
+        stage.setTitle("SignIn");
         stage.setScene(scene);
         stage.show();
     }

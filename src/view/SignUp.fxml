@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    
     <top>
       <Pane prefHeight="38.0" prefWidth="600.0" styleClass="background" stylesheets="@fxml.css" BorderPane.alignment="CENTER">
@@ -38,9 +38,9 @@
             
             <Label layoutX="151.0" layoutY="189.0" prefHeight="27.0" prefWidth="68.0" styleClass="txt" stylesheets="@fxml.css" text="Contraseña" />
             
-            <PasswordField fx:id="txtPasswd" focusTraversable="false" layoutX="262.0" layoutY="190.0" prefHeight="25.0" prefWidth="154.0" promptText="Min 8 caract. y números." />
+            <PasswordField fx:id="txtPasswd" focusTraversable="false" layoutX="262.0" layoutY="190.0" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="154.0" promptText="Min 8 caract. y números." />
             
-            <TextField fx:id="txtUser" focusTraversable="false" layoutX="263.0" layoutY="110.0" prefHeight="25.0" prefWidth="153.0" />
+            <TextField fx:id="txtUser" focusTraversable="false" layoutX="263.0" layoutY="110.0" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="153.0" />
             
             <Button fx:id="btnAtras" cancelButton="true" focusTraversable="false" layoutX="151.0" layoutY="295.0" mnemonicParsing="false" onAction="#buttonEventBack" onMouseClicked="#buttonEventBack" prefHeight="31.0" prefWidth="109.0" styleClass="btn" stylesheets="@fxml.css" text="Atrás" />
             
@@ -48,7 +48,7 @@
             
             <Label layoutX="151.0" layoutY="148.0" prefHeight="27.0" prefWidth="43.0" styleClass="txt" stylesheets="@fxml.css" text="Correo" />
             
-            <TextField fx:id="txtEmail" focusTraversable="false" layoutX="262.0" layoutY="149.0" prefHeight="25.0" prefWidth="153.0" promptText="ejemplo@live.com" />
+            <TextField fx:id="txtEmail" focusTraversable="false" layoutX="262.0" layoutY="149.0" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="153.0" promptText="ejemplo@live.com" />
             
             <Label layoutX="151.0" layoutY="69.0" prefHeight="27.0" prefWidth="110.0" styleClass="txt" stylesheets="@fxml.css" text="Nombre y apellido" />
             
@@ -58,15 +58,15 @@
             
             <Label layoutX="151.0" layoutY="221.0" prefHeight="47.0" prefWidth="68.0" styleClass="txt" stylesheets="@fxml.css" text="Repetir&#10;Contraseña" />
             
-            <PasswordField fx:id="txtPassw2" focusTraversable="false" layoutX="262.0" layoutY="232.0" prefHeight="25.0" prefWidth="154.0" promptText="Min 8 caract. y números." />
+            <PasswordField fx:id="txtPassw2" focusTraversable="false" layoutX="262.0" layoutY="232.0" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="154.0" promptText="Min 8 caract. y números." />
             
-            <Label fx:id="lblCaract" focusTraversable="false" layoutX="424.0" layoutY="194.0" prefHeight="17.0" prefWidth="153.0" text="* Menos de 8 carácteres" textFill="RED" visible="false" />
+            <Label fx:id="lblCaract" focusTraversable="false" layoutX="424.0" layoutY="190.0" prefHeight="17.0" prefWidth="153.0" styleClass="txt" stylesheets="@fxml.css" text="* Menos de 8 carácteres" textFill="RED" visible="false" />
             
-            <Label fx:id="lblNum" focusTraversable="false" layoutX="425.0" layoutY="205.0" prefHeight="17.0" prefWidth="151.0" text="* No contiene números" textFill="RED" visible="false" />
+            <Label fx:id="lblNum" focusTraversable="false" layoutX="425.0" layoutY="205.0" prefHeight="17.0" prefWidth="151.0" styleClass="txt" stylesheets="@fxml.css" text="* No contiene números" textFill="RED" visible="false" />
             
-            <Label fx:id="lblPasswd2" layoutX="423.0" layoutY="236.0" prefHeight="17.0" prefWidth="168.0" text="* No coinciden" textFill="RED" visible="false" />
+            <Label fx:id="lblPasswd2" layoutX="423.0" layoutY="236.0" prefHeight="17.0" prefWidth="168.0" styleClass="txt" stylesheets="@fxml.css" text="* No coinciden" textFill="RED" visible="false" />
             
-            <Label fx:id="lblEmail" focusTraversable="false" layoutX="416.0" layoutY="148.0" prefHeight="17.0" prefWidth="189.0" text="* Formato de correo incorrecto" textFill="RED" visible="false" />
+            <Label fx:id="lblEmail" focusTraversable="false" layoutX="425.0" layoutY="153.0" prefHeight="17.0" prefWidth="189.0" styleClass="txt" stylesheets="@fxml.css" text="* Formato de correo incorrecto" textFill="RED" visible="false" />
          </children>
          
       </Pane>
