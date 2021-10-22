@@ -51,6 +51,7 @@ public class SignInController implements Initializable {
         
         if(evt.equals(textUser)){
             if(event.getCharacter().equals(" ")){
+                
                 event.consume();
             }
         }
