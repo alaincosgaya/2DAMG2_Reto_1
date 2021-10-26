@@ -1,6 +1,7 @@
 package application;
 
 import controller.*;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import model.*;
@@ -18,6 +19,7 @@ public class App extends Application{
 
      @Override
     public void start(Stage stage) throws Exception {
+         
         Parent root = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
         Scene scene = new Scene(root);
         stage.setResizable(false);
@@ -25,6 +27,7 @@ public class App extends Application{
         stage.setTitle("SignIn");
         stage.setScene(scene);
         stage.show();
+        
     }
     
     

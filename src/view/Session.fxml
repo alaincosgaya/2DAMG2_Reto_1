@@ -31,16 +31,16 @@
           <children>
             <Label layoutX="54.0" layoutY="55.0" styleClass="header" stylesheets="@fxml.css" text="Bienvenido a tu cuenta" />
             
-            <Label layoutX="151.0" layoutY="145.0" prefHeight="27.0" prefWidth="43.0" styleClass="txt" stylesheets="@fxml.css" text="Usuario" />
+            <Label layoutX="200.0" layoutY="145.0" prefHeight="27.0" prefWidth="43.0" styleClass="txt" stylesheets="@fxml.css" text="Usuario" />
             
-            <Label layoutX="151.0" layoutY="226.0" prefHeight="27.0" prefWidth="43.0" styleClass="txt" stylesheets="@fxml.css" text="Correo" />
+            <Label layoutX="200.0" layoutY="213.0" prefHeight="27.0" prefWidth="43.0" styleClass="txt" stylesheets="@fxml.css" text="Correo" />
             
             <Separator layoutX="54.0" layoutY="111.0" prefHeight="1.0" prefWidth="495.0" />
             
-            <Label layoutX="221.0" layoutY="150.0" prefHeight="17.0" prefWidth="154.0" text="Nombre de usuario" textFill="#999191" />
+            <Label layoutX="286.0" layoutY="150.0" prefHeight="17.0" prefWidth="154.0" text="Nombre de usuario" textFill="#999191" />
             
-            <Label layoutX="221.0" layoutY="231.0" prefHeight="17.0" prefWidth="154.0" text="ejemplo@live.com" textFill="#999191" />
-            <MenuBar layoutX="1.0" layoutY="4.0" prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: white;">
+            <Label layoutX="286.0" layoutY="218.0" prefHeight="17.0" prefWidth="154.0" text="ejemplo@live.com" textFill="#999191" />
+            <MenuBar layoutX="1.0" layoutY="5.0" prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: white;">
               <menus>
                 <Menu mnemonicParsing="false" text="Window">
                   <items>

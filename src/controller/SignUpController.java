@@ -5,6 +5,8 @@
  */
 package controller;
 
+import exceptions.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -40,48 +43,39 @@ public class SignUpController implements Initializable {
 
     @FXML
     private Label lblEmail;
-    
+
     @FXML
     private Label lblNum;
-    
+
     @FXML
     private PasswordField txtPassw2;
-    
+
     @FXML
     private Label lblPasswd2;
-     
+
     @FXML
     private TextField txtUser;
-     
+
     @FXML
-    private void eventKey(KeyEvent event){
+    private TextField txtName;
+
+    @FXML
+    private Button btnSignUp;
+
+    @FXML
+    private void eventKey(KeyEvent event) {
         Object evt = event.getSource();
-        
-        if(evt.equals(txtUser)){
-            if(event.getCharacter().equals(" ")){
+
+        if (evt.equals(txtUser) || evt.equals(txtPasswd) || evt.equals(txtPassw2) || evt.equals(txtEmail)) {
+            if (event.getCharacter().equals(" ")) {
                 event.consume();
             }
         }
-        
-        if(evt.equals(txtPasswd)){
-            if(event.getCharacter().equals(" ")){
-                event.consume();
-            }
-        }
-        if(evt.equals(txtPassw2)){
-            if(event.getCharacter().equals(" ")){
-                event.consume();
-            }
-        }
-        if(evt.equals(txtEmail)){
-            if(event.getCharacter().equals(" ")){
-                event.consume();
-            }
-        }
+
     }
 
     @FXML
-    private void buttonEvent(ActionEvent event) throws Exception {
+    private void buttonEvent(ActionEvent event) throws IOException {
 
         try {
             Parent anotherRoot = FXMLLoader.load(getClass().getResource("/view/Session.fxml"));
@@ -89,19 +83,19 @@ public class SignUpController implements Initializable {
             anotherStage.setResizable(false);
             anotherStage.getIcons().add(new Image("/photos/descargas-removebg-preview.png"));
             anotherStage.setTitle("Session");
-            anotherStage.setScene(new Scene(anotherRoot, 600, 400));
+            anotherStage.setScene(new Scene(anotherRoot));
             anotherStage.show();
 
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
     @FXML
-    private void buttonEventBack(ActionEvent event) throws Exception {
+    private void buttonEventBack(ActionEvent event) throws IOException {
 
         try {
             Parent anotherRoot = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
@@ -109,113 +103,144 @@ public class SignUpController implements Initializable {
             anotherStage.setResizable(false);
             anotherStage.getIcons().add(new Image("/photos/descargas-removebg-preview.png"));
             anotherStage.setTitle("SignIn");
-            anotherStage.setScene(new Scene(anotherRoot, 600, 400));
+            anotherStage.setScene(new Scene(anotherRoot));
             anotherStage.show();
 
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
     private void emailTextValidation() {
-
         txtEmail.focusedProperty().addListener((ov, oldV, newV) -> {
-            if (!newV) {
-                String email = txtEmail.getText();
-                validarEmailPattern(email);
-                if (validarEmailPattern(email) == true) {
-                    lblEmail.setVisible(false);
-                } else {
-                    lblEmail.setVisible(true);
+            if (!txtEmail.getText().equals("")) {
+                if (!newV) {
+                    try {
+                        String email = txtEmail.getText();
+                        validarEmailPattern(email);
+                        lblEmail.setVisible(false);
+                    } catch (EmailPatternException e) {
+                        lblEmail.setVisible(true);
+                    }
                 }
             }
         });
+
     }
 
     private void passwdTextCaractValidation() {
+
         txtPasswd.focusedProperty().addListener((ov, oldV, newV) -> {
-            if (!newV) {
-                String passwd = txtPasswd.getText();
-                validarMinCaractPasswdPattern(passwd);
-                if (validarMinCaractPasswdPattern(passwd) == true) {
-                    lblCaract.setVisible(false);
-                } else {
-                    lblCaract.setVisible(true);
+            if (!txtPasswd.getText().equals("")) {
+                if (!newV) {
+                    try {
+                        String passwd = txtPasswd.getText();
+                        validarMinCaractPasswdPattern(passwd);
+                        lblCaract.setVisible(false);
+                    } catch (PasswordLengthException e) {
+                        lblCaract.setVisible(true);
+                    }
                 }
             }
         });
     }
+
     private void passwdTextNumValidation() {
+
         txtPasswd.focusedProperty().addListener((ov, oldV, newV) -> {
-            if (!newV) {
-                String passwd = txtPasswd.getText();
-                validarNumPasswdPattern(passwd);
-                if (validarNumPasswdPattern(passwd) == true) {
-                    lblNum.setVisible(false);
-                } else {
-                    lblNum.setVisible(true);
+            if (!txtPasswd.getText().equals("")) {
+                if (!newV) {
+                    try {
+                        String passwd = txtPasswd.getText();
+                        validarNumPasswdPattern(passwd);
+                        lblNum.setVisible(false);
+                    } catch (PasswordNumException e) {
+                        lblNum.setVisible(true);
+                    }
                 }
             }
         });
+
     }
-    
+
     private void repeatpasswd() {
-    
+
         txtPassw2.focusedProperty().addListener((ov, oldV, newV) -> {
-            if (!newV) {
-                String passwd = txtPassw2.getText();
-                validarEqualPasswdPattern(passwd);
-                if (validarNumPasswdPattern(passwd) == true) {
-                    lblPasswd2.setVisible(false);
-                } else {
-                    lblPasswd2.setVisible(true);
+            if (!txtPassw2.getText().equals("")) {
+                if (!newV) {
+                    try {
+                        String passwd = txtPassw2.getText();
+                        validarEqualPasswd();
+                        lblPasswd2.setVisible(false);
+                    } catch (SamePasswordException e) {
+                        lblPasswd2.setVisible(true);
+                    }
                 }
             }
         });
     }
-    
+
+    private void reportedFields() {
+        btnSignUp.disableProperty().bind(
+                txtPasswd.textProperty().isEmpty().or(txtEmail.textProperty().isEmpty().
+                        or(txtPassw2.textProperty().isEmpty().or(txtUser.textProperty().isEmpty().or(txtName
+                                .textProperty().isEmpty())))));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         emailTextValidation();
         passwdTextCaractValidation();
         passwdTextNumValidation();
         repeatpasswd();
+        reportedFields();
 
     }
-    
-    public static boolean validarEmailPattern(String email) {
 
-        String regex = "^(.+)@(.+)$";
+    public void validarEmailPattern(String email) throws EmailPatternException {
+
+        String regex = "^(.+)@(.+){3,50}$";
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(email);
 
-        return matcher.matches();
+        if (!matcher.matches()) {
+            throw new EmailPatternException(lblEmail.getText());
+        }
 
     }
 
-    public static boolean validarMinCaractPasswdPattern(String passwd) {
-        String regex = "^(.+){8}$";
+    public void validarMinCaractPasswdPattern(String passwd) throws PasswordLengthException {
+        String regex = "^(.+){8,50}$";
 
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(passwd);
 
-        return matcher.matches();
+        if (!matcher.matches()) {
+            throw new PasswordLengthException(lblCaract.getText());
+        }
 
     }
 
-    public static boolean validarNumPasswdPattern(String passwd) {
-        
-        return passwd.matches(".*\\d.*"); 
+    public void validarNumPasswdPattern(String passwd) throws PasswordNumException {
+
+        String regex = ".*\\d.*";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(passwd);
+        if (!matcher.matches()) {
+            throw new PasswordNumException(lblNum.getText());
+        }
     }
 
-     public boolean validarEqualPasswdPattern(String passwd) {
-        
-     return txtPasswd.getText().equals(txtPassw2.getText());
-     }
-
+    public void validarEqualPasswd() throws SamePasswordException {
+        if (!txtPasswd.getText().equals(txtPassw2.getText())) {
+            throw new SamePasswordException(lblPasswd2.getText());
+        }
+    }
 }

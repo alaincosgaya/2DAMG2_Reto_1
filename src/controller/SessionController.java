@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -28,7 +29,7 @@ public class SessionController implements Initializable{
     private BorderPane bPane;
     
     @FXML
-    private void buttonEventBack(ActionEvent event) throws Exception {
+    private void buttonEventBack(ActionEvent event) throws IOException {
 
         try {
             Parent anotherRoot = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
@@ -36,27 +37,25 @@ public class SessionController implements Initializable{
             anotherStage.setResizable(false);
             anotherStage.getIcons().add(new Image("/photos/descargas-removebg-preview.png"));
             anotherStage.setTitle("SignIn");
-            anotherStage.setScene(new Scene(anotherRoot, 600, 400));
+            anotherStage.setScene(new Scene(anotherRoot));
             anotherStage.show();
 
             bPane.getScene().getWindow().hide();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
     
     @FXML
-    private void buttonEventExit(ActionEvent event) throws Exception {
-
+    private void buttonEventExit(ActionEvent event){
         Platform.exit();
-
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }
 
 }
