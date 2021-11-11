@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="psp">
+            <file>file:/C:/Users/2dam/Documents/NetBeansProjects/Reto1v3/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/2dam/Documents/NetBeansProjects/Reto1v3/src/controller/SignInController.java</file>
+            <file>file:/C:/Users/2dam/Documents/NetBeansProjects/Reto1v3/src/view/SignUp.fxml</file>
+            <file>file:/C:/Users/2dam/Documents/NetBeansProjects/Reto1v3/src/view/SignIn.fxml</file>
+            <file>file:/C:/Users/2dam/Documents/NetBeansProjects/Reto1v3/src/view/fxml.css</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/2dam/Desktop/Reto1v3/test/controller/SignUpControllerTest.java</file>
+            <file>file:/C:/Users/2dam/Desktop/Reto1v3/src/logic/UiLogicImplementation.java</file>
+        </group>
+    </open-files>
+</project-private>
